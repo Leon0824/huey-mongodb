@@ -15,18 +15,18 @@ class MongoStorage(BaseStorage):
         super(MongoStorage, self).__init__(name)
 
     def initialize_schema(self):
-        self.db.huey_schedule.createIndex(
-            keys={"queue": 1, "timestamp": 1},
+        self.db.huey_schedule.create_index(
+            {"queue": 1, "timestamp": 1},
             name='schedule_queue_timestamp',
             unique=False, sparse=True, expireAfterSeconds=86400,
         )
-        self.db.huey_queue.createIndex(
-            keys={"priority": -1, "_id": 1},
+        self.db.huey_queue.create_index(
+            {"priority": -1, "_id": 1},
             name='queue_priority_id',
             unique=False, sparse=True, expireAfterSeconds=3600,
         )
-        self.db.huey_kv.createIndex(
-            keys={"queue": 1, "key": 1},
+        self.db.huey_kv.create_index(
+            {"queue": 1, "key": 1},
             name='kv_queue_key',
             unique=True, sparse=True, expireAfterSeconds=3600,
         )
