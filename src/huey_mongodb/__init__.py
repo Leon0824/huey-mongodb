@@ -18,17 +18,20 @@ class MongoStorage(BaseStorage):
         self.db.huey_schedule.create_index(
             {"queue": 1, "timestamp": 1},
             name='schedule_queue_timestamp',
-            unique=False, sparse=True, expireAfterSeconds=86400,
+            unique=False, sparse=True,
+            # expireAfterSeconds=86400,
         )
         self.db.huey_queue.create_index(
             {"priority": -1, "_id": 1},
             name='queue_priority_id',
-            unique=False, sparse=True, expireAfterSeconds=3600,
+            unique=False, sparse=True,
+            # expireAfterSeconds=3600,
         )
         self.db.huey_kv.create_index(
             {"queue": 1, "key": 1},
             name='kv_queue_key',
-            unique=True, sparse=True, expireAfterSeconds=3600,
+            unique=True, sparse=True,
+            # expireAfterSeconds=3600,
         )
 
 
