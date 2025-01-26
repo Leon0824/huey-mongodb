@@ -1,6 +1,6 @@
 [project]
 name = "huey-mongodb"
-version = "0.1.1"
+version = "1.0.0"
 description = "huey MongoDB backend"
 authors = [{ name = "Leon", email = "leon0824@gmail.com" }]
 dependencies = ["huey>=2.5,<2.6", "pymongo>=4.9,<4.11"]
